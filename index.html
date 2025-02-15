@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatApp</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen active">
+            <div class="form-container">
+                <h1>ChatApp</h1>
+                <div class="logo">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                </form>
+                <p class="switch-form">Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+            </div>
+        </div>
+
+        <!-- Signup Screen -->
+        <div id="signup-screen" class="screen">
+            <div class="form-container">
+                <h1>Create Account</h1>
+                <div class="logo">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <form id="signup-form">
+                    <div class="input-group">
+                        <label for="new-username">Username</label>
+                        <input type="text" id="new-username" placeholder="Choose a username" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new-password">Password</label>
+                        <input type="password" id="new-password" placeholder="Create a password" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                    </div>
+                    <div class="permission-group">
+                        <input type="checkbox" id="data-collection" required>
+                        <label for="data-collection">I agree to the data collection policies</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+                <p class="switch-form">Already have an account? <a href="#" id="show-login">Log In</a></p>
+            </div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div id="chat-screen" class="screen">
+            <div class="chat-container">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <h3 id="current-user">Username</h3>
+                            <p class="status">Online</p>
+                        </div>
+                        <div class="user-actions">
+                            <button id="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" id="search-contacts" placeholder="Search contacts...">
+                    </div>
+                    <div class="contacts-list" id="contacts-list">
+                        <!-- Contacts will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Main Chat Area -->
+                <div class="chat-area">
+                    <div class="chat-header">
+                        <div class="chat-user-info">
+                            <h3 id="chat-recipient">Select a contact</h3>
+                            <p class="recipient-status" id="recipient-status"></p>
+                        </div>
+                    </div>
+                    <div class="messages-container" id="messages-container">
+                        <!-- Messages will be populated by JavaScript -->
+                    </div>
+                    <div class="message-input-container">
+                        <form id="message-form">
+                            <input type="text" id="message-input" placeholder="Type a message..." disabled>
+                            <button type="button" id="attach-btn" disabled><i class="fas fa-paperclip"></i></button>
+                            <button type="submit" id="send-btn" disabled><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Status Bar (battery, etc.) -->
+    <div class="system-status">
+        <div class="battery-status">
+            <i class="fas fa-battery-half"></i>
+            <span id="battery-level">50%</span>
+        </div>
+        <div class="time" id="current-time">00:00</div>
+    </div>
+
+    <!-- Loading overlay for Firebase operations -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.1/firebase-app.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.1/firebase-auth.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.1/firebase-firestore.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.1/firebase-storage.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
